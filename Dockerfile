@@ -1,4 +1,3 @@
-ARG IMAGE=php
-ARG TAG=${DOCKER_TAG:-latest}
+ARG IMAGE
+ARG TAG
 FROM ${IMAGE}:${TAG}
-RUN env
