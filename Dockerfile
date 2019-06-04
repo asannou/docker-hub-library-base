@@ -1,0 +1,4 @@
+ARG IMAGE=php
+ARG TAG=${DOCKER_TAG:-latest}
+FROM ${IMAGE}:${TAG}
+RUN env
