@@ -81,7 +81,7 @@ class DockerHubBaseImageChecker {
   }
 
   async pullBuildTrigger(tag) {
-    const json = `{'docker_tag': '${tag}'}`;
+    const json = `{"docker_tag": "${tag}"}`;
     return await httpsPostJson(this.trigger_url, {}, json);
   }
 
