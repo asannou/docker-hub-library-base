@@ -3,6 +3,7 @@
 
 const https = require('https');
 const crypto = require('crypto');
+const { URL } = require('url');
 
 const DOCKER_AUTH_BASE_URL = 'https://auth.docker.io/';
 const DOCKER_REGISTRY_SERVICE = 'registry.docker.io';
