@@ -32,7 +32,12 @@ async function httpsPostJson(url, options, json) {
     req.write(json);
     req.end();
   });
-  return await slurpStream(res);
+  const location = res.headers['location'];
+  if (location) {
+    return httpsPostJson(location, options, json);
+  } else {
+    return await slurpStream(res);
+  }
 }
 
 function sha256digest(data) {
