@@ -22,7 +22,7 @@ async function httpsGet(...args) {
   return await slurpStream(res);
 }
 
-async function httpsPostJson(url, options, json) {
+async function httpsPostJson(url, options, json, redirect=false) {
   const res = await new Promise((resolve) => {
     options = Object.assign(options, {
       method: 'POST',
@@ -33,8 +33,8 @@ async function httpsPostJson(url, options, json) {
     req.end();
   });
   const location = res.headers['location'];
-  if (location) {
-    return httpsPostJson(location, options, json);
+  if (location && !redirect) {
+    return await httpsPostJson(location, options, json, true);
   } else {
     return await slurpStream(res);
   }
